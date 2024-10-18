@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FLAMES Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="background-animation"></div> <!-- Falling emoji background -->
+    <div class="container" id="musicContainer">
+        <h1>FLAMES Game</h1>
+        <input type="text" id="boyName" placeholder="Enter Boy's Name">
+        <input type="text" id="girlName" placeholder="Enter Girl's Name">
+        <button id="calculateButton">Calculate</button>
+        <h2 id="result"></h2>
+        <div id="crackerBlast"></div>
+        <p style="text-align: right;"><small>Double click ME to stop music</small></p>
+    </div>
+
+    <audio id="audioPlayer" preload="auto" loop></audio> <!-- Looping audio player -->
+    <script src="script.js"></script>
+</body>
+</html>
