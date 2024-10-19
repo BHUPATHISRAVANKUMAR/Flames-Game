@@ -7,18 +7,19 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="background-animation"></div> <!-- Falling emoji background -->
+    <div id="emojiBackground"></div> <!-- Dynamic background for emojis -->
+
     <div class="container" id="musicContainer">
         <h1>FLAMES Game</h1>
         <input type="text" id="boyName" placeholder="Enter Boy's Name">
         <input type="text" id="girlName" placeholder="Enter Girl's Name">
         <button id="calculateButton">Calculate</button>
         <h2 id="result"></h2>
-        <div id="crackerBlast"></div>
+        <div id="crackerBlast"></div> <!-- Cracker animation -->
         <p style="text-align: right;"><small>Double click ME to stop music</small></p>
     </div>
 
-    <audio id="audioPlayer" preload="auto" loop></audio> <!-- Looping audio player -->
+    <audio id="audioPlayer" preload="auto" loop></audio> <!-- Music Player -->
     <script src="script.js"></script>
 </body>
 </html>
