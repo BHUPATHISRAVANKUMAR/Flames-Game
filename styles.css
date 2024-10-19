@@ -1,33 +1,35 @@
-/* Common Styles */
 body {
+    margin: 0;
+    overflow: hidden; /* Prevent scrolling */
     font-family: Arial, sans-serif;
-    background-color: #fff4e6; /* Light orange background */
+    background-color: #fff0e1;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    margin: 0;
+    position: relative;
 }
 
 .container {
-    background: white;
-    padding: 30px;
+    background: #ffffff;
+    padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     text-align: center;
+    z-index: 10; /* Ensure it stays on top */
 }
 
 input {
     margin: 10px;
     padding: 10px;
     width: 200px;
-    border: 3px solid #ffc078;
-    border-radius: 5px;
 }
 
 input[type="text"] {
     font-family:'Times New Roman';
     font-size: large;
+    border: 3px solid #ffc078;
+    border-radius: 5px;
     font-weight: bold;
 
 }
@@ -45,12 +47,13 @@ p {
     cursor:pointer;
 }
 
+
 button {
     padding: 10px 15px;
-    background-color: #ff922b;
+    background-color: #ff7f50;
     color: white;
     border: none;
-    border-radius: 7px;
+    border-radius: 5px;
     cursor: pointer;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 }
@@ -70,17 +73,6 @@ h2:hover {
     color: #ff922b;
     text-shadow:0 0 15px rgba(0, 0, 0, 0.2) ;
     
-}
-
-/* Cracker Blast Animation */
-#crackerBlast {
-    display: none;
-    position: absolute;
-    width: 100px;
-    height: 100px;
-    background: url('https://cdn.pixabay.com/photo/2013/07/13/11/46/fireworks-158915_960_720.png') no-repeat center;
-    background-size: contain;
-    animation: explode 1s ease-out forwards;
 }
 
 /* Animations for relationship statuses */
@@ -140,3 +132,43 @@ h2:hover {
     60% { transform: rotate(5deg); }
     100% { transform: rotate(0deg); }
 }
+
+/* Falling emoji background */
+#emojiBackground {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1; /* Behind the main content */
+}
+
+.emoji {
+    position: absolute;
+    font-size: 30px;
+    animation: fall linear infinite;
+}
+
+/* Keyframes for emoji falling animation */
+@keyframes fall {
+    0% {
+        transform: translateY(-100%);
+    }
+    100% {
+        transform: translateY(100vh);
+    }
+}
+
+/* Cracker animation */
+#crackerBlast {
+    display: none;
+    width: 100%;
+    height: 100%;
+    background: url('cracker.gif') no-repeat center center;
+    background-size: contain;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
