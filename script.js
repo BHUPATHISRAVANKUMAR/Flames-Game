@@ -30,23 +30,22 @@ function playMusicForStatus(status) {
         'S': 'music/sister.mp3'
     };
 
-    audioPlayer.src = musicDict[status]; // Set the audio source
-    audioPlayer.play(); // Play the audio
+    audioPlayer.src = musicDict[status];
+    audioPlayer.play();
 }
 
 function toggleMusic() {
     const audioPlayer = document.getElementById("audioPlayer");
-
     if (audioPlayer.paused) {
-        audioPlayer.play(); // Play if paused
+        audioPlayer.play();
     } else {
-        audioPlayer.pause(); // Pause if playing
-        audioPlayer.currentTime = 0; // Reset to the beginning
+        audioPlayer.pause();
+        audioPlayer.currentTime = 0;
     }
 }
 
 function displayError(message) {
-    alert(message); // Simple alert for error messages
+    alert(message);
 }
 
 function calculate() {
@@ -60,31 +59,37 @@ function calculate() {
 
     const resultChar = flamesGame(boyName, girlName);
     const resultsDict = {
-        'F': "Friends",
-        'L': "Love",
-        'A': "Affection",
-        'M': "Marriage",
-        'E': "Enemy",
-        'S': "Sister"
+        'F': { text: "Friends", emoji: "👫" },
+        'L': { text: "Love", emoji: "❤️" },
+        'A': { text: "Affection", emoji: "🤗" },
+        'M': { text: "Marriage", emoji: "💍" },
+        'E': { text: "Enemy", emoji: "😠" },
+        'S': { text: "Sister", emoji: "👧" }
     };
 
+    const { text, emoji } = resultsDict[resultChar];
     const resultElement = document.getElementById("result");
-    resultElement.className = ''; // Clear previous animations
-    resultElement.classList.add(resultChar); // Add new class
-    resultElement.innerText =`The relationship status is: ${resultsDict[resultChar]}`; // Display single result
+    resultElement.innerText = `The relationship status is ${text} (${emoji})`;
 
-    playMusicForStatus(resultChar); // Play the corresponding music
+    playMusicForStatus(resultChar);
+    generateFallingEmojis(emoji);
+}
 
-    if (resultChar === 'L' || resultChar === 'M') {
-        const crackerBlast = document.getElementById("crackerBlast");
-        crackerBlast.style.display = 'block';
-        setTimeout(() => crackerBlast.style.display = 'none', 100);
+function generateFallingEmojis(emoji) {
+    const emojiBackground = document.getElementById("emojiBackground");
+    emojiBackground.innerHTML = ''; // Clear previous emojis
+
+    for (let i = 0; i < 30; i++) {
+        const span = document.createElement("span");
+        span.className = 'emoji';
+        span.innerText = emoji;
+        span.style.left = Math.random() * 100 + 'vw';
+        span.style.animationDuration = Math.random() * 5 + 5 + 's'; // Random fall speed
+        emojiBackground.appendChild(span);
     }
 }
 
-// Toggle music on double-click of the container
 document.getElementById("musicContainer").addEventListener("dblclick", toggleMusic);
-
 document.getElementById("calculateButton").addEventListener("click", calculate);
 
 document.addEventListener("keydown", (event) => {
